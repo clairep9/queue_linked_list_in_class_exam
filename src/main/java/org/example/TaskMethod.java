@@ -9,7 +9,7 @@ public class TaskMethod {
     private Queue<Task> taskQueue;
 
     public TaskMethod() {
-    
+        taskQueue = new LinkedList<>();
     }
 
     public void taskInitialize() {
@@ -20,27 +20,43 @@ public class TaskMethod {
     }
 
     public void addTaskToQueue(Task task) {
- 
+        if (task == null) {
+            throw new IllegalArgumentException("Task cannot be null");
+        }
+        taskQueue.add(task);
     }
 
     public Task processNextTaskFromQueue() {
-  
+        return taskQueue.poll();
     }
 
     public Task peekAtNextTaskInQueue() {
-       
+        return taskQueue.peek();
     }
 
     public int getTaskQueueSize() {
-    
+        return taskQueue.size();
     }
 
     public List<Task> getTasksWithPriority(int priority) {
-
+        List<Task> result = new ArrayList<>();
+        for (Task task : taskQueue) {
+            if (task.getPriority() == priority) {
+                result.add(task);
+            }
+        }
+        return result;
     }
     
     public void moveTaskToBack(int numberOfPositions) {
-  
+        if (numberOfPositions <= 0 || numberOfPositions >= taskQueue.size()) {
+            throw new IllegalArgumentException("Invalid number of positions");
+        }
+
+        for (int i = 0; i < numberOfPositions; i++) {
+            Task task = taskQueue.poll();
+            taskQueue.add(task);
+        }
     }
 
     public static void main( String[] args )
