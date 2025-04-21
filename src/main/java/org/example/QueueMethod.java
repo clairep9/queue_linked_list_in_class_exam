@@ -1,0 +1,37 @@
+package org.example;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueMethod {
+
+    private Queue<String> fruitsQueue; 
+
+    public QueueMethod() {
+        fruitsQueue = new LinkedList<>();
+    }
+
+    public void queueDemo() {
+        fruitsQueue.add("apple");
+        fruitsQueue.add("lemon");
+        fruitsQueue.add("banana");
+        fruitsQueue.add("orange");
+    }
+
+    public void addFruitToQueue(String fruit) {
+
+    }
+
+    public String removeFruitFromQueue() {
+    
+    }
+
+    public String peekAtHeadOfQueue() {
+        
+    }
+
+    public int getQueueSize() {
+  
+    }
+
+}
